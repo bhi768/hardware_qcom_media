@@ -132,9 +132,13 @@ LOCAL_VENDOR_MODULE             := true
 LOCAL_CFLAGS                    := $(libmm-vdec-def) -Werror
 LOCAL_C_INCLUDES                += $(libmm-vdec-inc)
 LOCAL_ADDITIONAL_DEPENDENCIES   := $(libmm-vdec-add-dep)
+LOCAL_HEADER_LIBRARIES          := \
+    libnativebase_headers \
+    libhardware_headers \
+    media_plugin_headers \
 
 LOCAL_PRELINK_MODULE    := false
-LOCAL_SHARED_LIBRARIES  := liblog libcutils libdl
+LOCAL_SHARED_LIBRARIES  := liblog libcutils libdl libutils
 
 LOCAL_SHARED_LIBRARIES  += libqdMetaData libhypv_intercept
 
@@ -166,7 +170,7 @@ LOCAL_C_INCLUDES              += $(libmm-vdec-inc)
 LOCAL_ADDITIONAL_DEPENDENCIES := $(libmm-vdec-add-dep)
 
 LOCAL_PRELINK_MODULE          := false
-LOCAL_SHARED_LIBRARIES        := liblog libcutils
+LOCAL_SHARED_LIBRARIES        := liblog libcutils libutils
 LOCAL_SHARED_LIBRARIES        += libswvdec
 
 LOCAL_SRC_FILES               := src/omx_swvdec.cpp
